@@ -12,8 +12,13 @@ import {
   CardGrid,
   SimpleCell,
   Text,
+  Separator,
+  Div,
+  Image,
+  Title,
 } from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
+import ProductCard from "../ProductCard/ProductCard";
 
 const App = () => {
   const platform = usePlatform();
@@ -33,26 +38,25 @@ const App = () => {
               <PanelHeader>Market VK test</PanelHeader>
               <Group description="Карточки товаров">
                 <CardGrid spaced={true} size="s">
-                  <Card>
-                    <div style={{ paddingBottom: "92%" }} />
-                  </Card>
-                  <Card>
-                    <div style={{ paddingBottom: "92%" }} />
-                  </Card>
-                  <Card>
-                    <div style={{ paddingBottom: "92%" }} />
-                  </Card>
+                  <ProductCard />
+                  <ProductCard />
+                  <ProductCard />
+                  <ProductCard />
+                  <ProductCard />
+                  <ProductCard />
+                  <ProductCard />
                 </CardGrid>
               </Group>
             </Panel>
           </View>
         </SplitCol>
-        <SplitCol width="25%" autoSpaced={true}>
+        <Separator />
+        <SplitCol width="25%">
           <View activePanel="main">
             <Panel id="main">
               <PanelHeader></PanelHeader>
               <Group>
-                <SimpleCell height="100vh">
+                <SimpleCell>
                   <Text>Price</Text>
                 </SimpleCell>
               </Group>
