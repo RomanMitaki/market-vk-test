@@ -8,20 +8,37 @@ import {
   PanelHeader,
   usePlatform,
   Group,
-  Card,
   CardGrid,
   SimpleCell,
   Text,
   Separator,
-  Div,
-  Image,
-  Title,
 } from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
 import ProductCard from "../ProductCard/ProductCard";
+import { TProductMapped } from "../../utils/types";
+import { useEffect, useState } from "react";
+import { getProducts } from "../../utils/api";
 
 const App = () => {
   const platform = usePlatform();
+  const [products, setProducts] = useState<TProductMapped[]>([]);
+
+  const fetchProducts = async () => {
+    try {
+      const data = await getProducts();
+      if (data) {
+        setProducts(data);
+      }
+    } catch (error) {
+    } finally {
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  console.log(products);
 
   return (
     <AppRoot>
@@ -38,13 +55,10 @@ const App = () => {
               <PanelHeader>Market VK test</PanelHeader>
               <Group description="Карточки товаров">
                 <CardGrid spaced={true} size="s">
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
-                  <ProductCard />
+                  {products.length &&
+                    products.map((product) => (
+                      <ProductCard key={product.id} info={product} />
+                    ))}
                 </CardGrid>
               </Group>
             </Panel>

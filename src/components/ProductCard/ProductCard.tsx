@@ -1,30 +1,30 @@
-import { Button, Card, Div, Text, Title } from "@vkontakte/vkui";
+import { Button, Card, Div, Spacing, Text, Title } from "@vkontakte/vkui";
 import * as React from "react";
 import "./styles.css";
+import { TProductMapped } from "../../utils/types";
 
-const ProductCard = () => {
+type TProductCardProps = {
+  info: TProductMapped;
+};
+const ProductCard = (props: TProductCardProps) => {
+  const { title, qty, image, description, price } = props.info;
   return (
     <Card style={{ borderRadius: "20px" }}>
       <Div className="card__container">
-        <img
-          className="card__image"
-          src="https://source.unsplash.com/b5D7zjvY184"
-          alt=""
-        />
-        <Title>Product</Title>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque
-          modi vero voluptas. Adipisci at autem dolore error impedit inventore
-          laborum magni necessitatibus obcaecati, optio perferendis praesentium
-          quasi sed temporibus voluptates?
-        </Text>
-        <Div>
-          <Div>
+        <img className="card__image" src={image} alt="image" />
+        <Spacing />
+        <Title>{title}</Title>
+        <Spacing />
+        <Text>{description}</Text>
+        <Spacing />
+        <Text>Цена за 1 шт. {price} руб.</Text>
+        <Div className="card__buttonsContainer">
+          <Div className="card__buttonsContainer_counter">
             <Button>+</Button>
-            <Text>10</Text>
+            <Text>{qty}</Text>
             <Button>-</Button>
           </Div>
-          <Text>2300</Text>
+          <Text>Total price</Text>
           <Button>delete</Button>
         </Div>
       </Div>
