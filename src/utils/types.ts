@@ -1,3 +1,7 @@
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { ActionCreator, AnyAction, ThunkAction } from "@reduxjs/toolkit";
+import { store } from "../services/store";
+
 export type TProduct = {
   id: number;
   title: string;
@@ -24,3 +28,17 @@ export type TProductMapped = {
   image: string;
   qty: number;
 };
+
+export type TProductsState = {
+  products: TProductMapped[];
+  isLoading: boolean;
+  hasError: boolean;
+};
+
+export type RootState = ReturnType<typeof store.getState>;
+export const TUseSelector: TypedUseSelectorHook<RootState> = useSelector;
+export type AppThunk<ReturnType = void> = ActionCreator<
+  ThunkAction<ReturnType, RootState, unknown, AnyAction>
+>;
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch = () => useDispatch<AppDispatch & AppThunk>();

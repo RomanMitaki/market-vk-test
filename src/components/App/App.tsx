@@ -15,30 +15,19 @@ import {
 } from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
 import ProductCard from "../ProductCard/ProductCard";
-import { TProductMapped } from "../../utils/types";
-import { useEffect, useState } from "react";
-import { getProducts } from "../../utils/api";
+import { useEffect } from "react";
+import { TUseSelector, useAppDispatch } from "../../utils/types";
+import { renderProducts } from "../../services/actions/products";
 
 const App = () => {
   const platform = usePlatform();
-  const [products, setProducts] = useState<TProductMapped[]>([]);
-
-  const fetchProducts = async () => {
-    try {
-      const data = await getProducts();
-      if (data) {
-        setProducts(data);
-      }
-    } catch (error) {
-    } finally {
-    }
-  };
-
+  const dispatch = useAppDispatch();
+  const { products, isLoading, hasError } = TUseSelector(
+    (store) => store.products,
+  );
   useEffect(() => {
-    fetchProducts();
-  }, []);
-
-  console.log(products);
+    dispatch(renderProducts());
+  }, [dispatch]);
 
   return (
     <AppRoot>
