@@ -12,6 +12,7 @@ import {
   SimpleCell,
   Text,
   Separator,
+  Spinner,
 } from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
 import ProductCard from "../ProductCard/ProductCard";
@@ -23,9 +24,7 @@ import { useAppSelector } from "../../services/hooks/useAppSelector";
 const App = () => {
   const platform = usePlatform();
   const dispatch = useAppDispatch();
-  const { products, isLoading, hasError } = useAppSelector(
-    (store) => store.products,
-  );
+  const { products, isLoading } = useAppSelector((store) => store.products);
   useEffect(() => {
     dispatch(renderProducts());
   }, [dispatch]);
@@ -51,10 +50,14 @@ const App = () => {
               <PanelHeader>Market VK test</PanelHeader>
               <Group description="Карточки товаров">
                 <CardGrid spaced={true} size="s">
-                  {products.length &&
+                  {isLoading ? (
+                    <Spinner />
+                  ) : (
+                    products.length &&
                     products.map((product) => (
                       <ProductCard key={product.id} info={product} />
-                    ))}
+                    ))
+                  )}
                 </CardGrid>
               </Group>
             </Panel>
@@ -66,8 +69,11 @@ const App = () => {
             <Panel id="main">
               <PanelHeader></PanelHeader>
               <Group>
-                <SimpleCell>
-                  <Text>{totalPrice}</Text>
+                <SimpleCell style={{ height: "300px" }}>
+                  <Text
+                    weight={"3"}
+                    normalize={true}
+                  >{`Общая стоимость всех товаров составляет ${totalPrice} руб.`}</Text>
                 </SimpleCell>
               </Group>
             </Panel>

@@ -1,4 +1,12 @@
-import { Button, Card, Div, Spacing, Text, Title } from "@vkontakte/vkui";
+import {
+  Button,
+  Card,
+  Div,
+  IconButton,
+  Spacing,
+  Text,
+  Title,
+} from "@vkontakte/vkui";
 import * as React from "react";
 import "./styles.css";
 import { TProductMapped } from "../../utils/types";
@@ -10,6 +18,7 @@ import {
   deleteItem,
   increaseItem,
 } from "../../services/slices/products";
+import { Icon24Delete } from "@vkontakte/icons";
 
 type TProductCardProps = {
   info: TProductMapped;
@@ -36,11 +45,13 @@ const ProductCard = (props: TProductCardProps) => {
   return (
     <Card style={{ borderRadius: "20px" }}>
       <Div className="card__container">
-        <img className="card__image" src={image} alt="image" />
+        <Div className="card__imageContainer">
+          <img className="card__image" src={image} alt="image" />
+        </Div>
         <Spacing />
-        <Title>{title}</Title>
+        <Title className="card__title">{title}</Title>
         <Spacing />
-        <Text>{description}</Text>
+        <Text className="card__description">{description}</Text>
         <Spacing />
         <Text>Цена за 1 шт. {price} руб.</Text>
         <Div className="card__buttonsContainer">
@@ -54,7 +65,11 @@ const ProductCard = (props: TProductCardProps) => {
             <Text>{qty}</Text>
           </Div>
           <Text>{totalItemsPrice}</Text>
-          <Button onClick={onDelete}>delete</Button>
+          <div>
+            <IconButton aria-label="Удалить 24" onClick={onDelete}>
+              <Icon24Delete />
+            </IconButton>
+          </div>
         </Div>
       </Div>
     </Card>
