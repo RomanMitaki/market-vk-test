@@ -15,7 +15,7 @@ import {
 } from "@vkontakte/vkui";
 import "@vkontakte/vkui/dist/vkui.css";
 import ProductCard from "../ProductCard/ProductCard";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { renderProducts } from "../../services/actions/products";
 import { useAppDispatch } from "../../services/hooks/useAppDispatch";
 import { useAppSelector } from "../../services/hooks/useAppSelector";
@@ -29,6 +29,12 @@ const App = () => {
   useEffect(() => {
     dispatch(renderProducts());
   }, [dispatch]);
+
+  const totalPrice = useMemo(() => {
+    return products
+      .reduce((acc, item) => acc + item.price * item.qty, 0)
+      .toFixed(2);
+  }, [products]);
 
   return (
     <AppRoot>
@@ -61,7 +67,7 @@ const App = () => {
               <PanelHeader></PanelHeader>
               <Group>
                 <SimpleCell>
-                  <Text>Price</Text>
+                  <Text>{totalPrice}</Text>
                 </SimpleCell>
               </Group>
             </Panel>

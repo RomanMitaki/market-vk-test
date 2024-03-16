@@ -2,12 +2,37 @@ import { Button, Card, Div, Spacing, Text, Title } from "@vkontakte/vkui";
 import * as React from "react";
 import "./styles.css";
 import { TProductMapped } from "../../utils/types";
+import { useAppDispatch } from "../../services/hooks/useAppDispatch";
+import { useAppSelector } from "../../services/hooks/useAppSelector";
+import { useMemo } from "react";
+import {
+  decreaseItem,
+  deleteItem,
+  increaseItem,
+} from "../../services/slices/products";
 
 type TProductCardProps = {
   info: TProductMapped;
 };
 const ProductCard = (props: TProductCardProps) => {
-  const { title, qty, image, description, price } = props.info;
+  const dispatch = useAppDispatch();
+  const { products } = useAppSelector((store) => store.products);
+  const { title, qty, image, description, price, id } = props.info;
+
+  const totalItemsPrice = useMemo(() => {
+    return (price * qty).toFixed(2);
+  }, [qty]);
+
+  const onDelete = () => {
+    dispatch(deleteItem(id));
+  };
+  const decrease = () => {
+    dispatch(decreaseItem(id));
+  };
+  const increase = () => {
+    dispatch(increaseItem(id));
+  };
+
   return (
     <Card style={{ borderRadius: "20px" }}>
       <Div className="card__container">
@@ -20,12 +45,16 @@ const ProductCard = (props: TProductCardProps) => {
         <Text>Цена за 1 шт. {price} руб.</Text>
         <Div className="card__buttonsContainer">
           <Div className="card__buttonsContainer_counter">
-            <Button>+</Button>
+            <Button disabled={qty === 1} onClick={decrease}>
+              -
+            </Button>
+            <Button disabled={qty === 10} onClick={increase}>
+              +
+            </Button>
             <Text>{qty}</Text>
-            <Button>-</Button>
           </Div>
-          <Text>Total price</Text>
-          <Button>delete</Button>
+          <Text>{totalItemsPrice}</Text>
+          <Button onClick={onDelete}>delete</Button>
         </Div>
       </Div>
     </Card>

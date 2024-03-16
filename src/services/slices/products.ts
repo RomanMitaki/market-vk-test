@@ -33,7 +33,9 @@ export const productsSlice = createSlice({
       );
     },
     deleteItem: (state, action) => {
-      state.products.filter((item) => item.id !== action.payload);
+      state.products = state.products.filter(
+        (item) => item.id !== action.payload,
+      );
     },
   },
 });
