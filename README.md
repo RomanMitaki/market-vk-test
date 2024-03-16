@@ -1,46 +1,42 @@
-# Getting Started with Create React App
+# Тестовое задание VK (market team)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [Сайт]()
 
-## Available Scripts
+## Описание
 
-In the project directory, you can run:
+Тестовое задание для команды маркета (frontend-intern).
+Создать React-приложение для корзины товаров магазина на основе компонентов-функций.
 
-### `npm start`
+## Требования
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- макет из двух колонок шириной 3:1 (применить дизайн-систему или flexbox/grid в css);
+- в левой колонке вывод карточек товаров в корзине;
+- карточка товара состоит из его изображения, наименования, описания, количества и стоимости;
+- должна быть возможность изменять количество товара от 1 до 10, а также удалять товар из корзины;
+- в правой колонке вывод итоговой стоимости всех товаров с учетом их количества;
+- для хранения состояния приложения желательно использовать стейт-менеджер.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Функциональность
 
-### `npm test`
+- приложение асинхронно (fetchAPI) получает захардкоженные данные с информацией о товарах (чтение идет из файла data.json) и отрисовывает их;
+- для хранения состояния приложения используется Redux Toolkit;
+- запрос к backend учитывает возможность получения ошибки или частичное получение данных;
+- приложение построено на основе дизайн-системы VKUI;
+- реализована вся функциональность, указанная в разделе Требования.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Технологии
 
-### `npm run build`
+Приложение создано с использованием Create React App.
+Стек:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- HTML;
+- CSS;
+- React.js;
+- Redux Toolkit;
+- TypeScript.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Установка
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Клонировать репозиторий git clone git@github.com:RomanMitaki/market-vk-test.git.
+2. Установить зависимости с помощью npm install.
+3. Запустить проект npm run start.

@@ -1,77 +1,75 @@
 .card__container {
-    min-width: 325px;
+  min-width: 325px;
 
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 393px;
-    justify-content: space-between;
-    box-sizing: border-box;
-    border-radius: 20px;
-    max-height: 700px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 393px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 20px;
+  max-height: 700px;
 }
 
 .card__container:hover {
-    border: 2px solid pink;
+  border: 2px solid pink;
 }
 
 .card__imageContainer {
-    display: block;
-    width: 100%;
-    height: 325px;
-    padding: 0;
-    border-radius: 20px 20px 0 0;
-    background-color: white;
+  display: block;
+  width: 100%;
+  height: 325px;
+  padding: 0;
+  border-radius: 20px 20px 0 0;
+  background-color: white;
 }
 
 .card__image {
-    display: block;
-    width: 100%;
-    height: 325px;
-    object-fit: contain;
-    border-radius: 20px 20px 0 0;
-    background-color: white;
+  display: block;
+  width: 100%;
+  height: 325px;
+  object-fit: contain;
+  border-radius: 20px 20px 0 0;
+  background-color: white;
 }
 
 .card__buttonsContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card__buttonsContainer_counter {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
 }
 
 .card__title {
-    height: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+  height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 
 .card__description {
-    height: 150px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    word-break: break-word;
-    display: -webkit-box;
-    -webkit-line-clamp: 5;
-    -webkit-box-orient: vertical;
-    overflow-y: hidden;
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
+  height: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
 }
 
 .card__description:hover {
-    overflow-y: auto;
+  overflow-y: auto;
 }
-
-
