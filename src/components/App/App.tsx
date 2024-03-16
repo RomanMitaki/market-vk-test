@@ -16,13 +16,14 @@ import {
 import "@vkontakte/vkui/dist/vkui.css";
 import ProductCard from "../ProductCard/ProductCard";
 import { useEffect } from "react";
-import { TUseSelector, useAppDispatch } from "../../utils/types";
 import { renderProducts } from "../../services/actions/products";
+import { useAppDispatch } from "../../services/hooks/useAppDispatch";
+import { useAppSelector } from "../../services/hooks/useAppSelector";
 
 const App = () => {
   const platform = usePlatform();
   const dispatch = useAppDispatch();
-  const { products, isLoading, hasError } = TUseSelector(
+  const { products, isLoading, hasError } = useAppSelector(
     (store) => store.products,
   );
   useEffect(() => {

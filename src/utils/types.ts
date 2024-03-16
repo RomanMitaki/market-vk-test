@@ -36,9 +36,7 @@ export type TProductsState = {
 };
 
 export type RootState = ReturnType<typeof store.getState>;
-export const TUseSelector: TypedUseSelectorHook<RootState> = useSelector;
 export type AppThunk<ReturnType = void> = ActionCreator<
   ThunkAction<ReturnType, RootState, unknown, AnyAction>
 >;
 export type AppDispatch = typeof store.dispatch;
-export const useAppDispatch = () => useDispatch<AppDispatch & AppThunk>();
