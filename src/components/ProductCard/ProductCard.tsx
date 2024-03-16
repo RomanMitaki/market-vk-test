@@ -3,6 +3,7 @@ import {
   Card,
   Div,
   IconButton,
+  Separator,
   Spacing,
   Text,
   Title,
@@ -53,21 +54,25 @@ const ProductCard = (props: TProductCardProps) => {
         <Spacing />
         <Text className="card__description">{description}</Text>
         <Spacing />
-        <Text>Цена за 1 шт. {price} руб.</Text>
+        <Text>
+          Цена за 1 шт. <span style={{ color: "green" }}>{price}</span> руб.
+        </Text>
         <Div className="card__buttonsContainer">
           <Div className="card__buttonsContainer_counter">
             <Button disabled={qty === 1} onClick={decrease}>
               -
             </Button>
+            <Separator />
+            <Text style={{ lineHeight: "1.8" }}>{qty}</Text>
+            <Separator />
             <Button disabled={qty === 10} onClick={increase}>
               +
             </Button>
-            <Text>{qty}</Text>
           </Div>
-          <Text>{totalItemsPrice}</Text>
+          <Text style={{ color: "green" }}>{`${totalItemsPrice} руб.`}</Text>
           <div>
             <IconButton aria-label="Удалить 24" onClick={onDelete}>
-              <Icon24Delete />
+              <Icon24Delete fill={"red"} />
             </IconButton>
           </div>
         </Div>

@@ -70,10 +70,10 @@ const App = () => {
               <PanelHeader></PanelHeader>
               <Group>
                 <SimpleCell style={{ height: "300px" }}>
-                  <Text
-                    weight={"3"}
-                    normalize={true}
-                  >{`Общая стоимость всех товаров составляет ${totalPrice} руб.`}</Text>
+                  <Text weight={"3"} normalize={true}>
+                    Общая стоимость всех товаров составляет{" "}
+                    <span style={{ color: "green" }}>{totalPrice}</span> руб.
+                  </Text>
                 </SimpleCell>
               </Group>
             </Panel>

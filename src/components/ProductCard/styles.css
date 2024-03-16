@@ -37,14 +37,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
+    align-items: center;
 }
 
 .card__buttonsContainer_counter {
     display: flex;
     flex-direction: row;
     justify-content: left;
-
 }
 
 .card__title {
